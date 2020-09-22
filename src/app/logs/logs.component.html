@@ -1,1 +1,42 @@
-<p>logs works!</p>
+<br>
+<h4><b>Log Time</b></h4>
+<hr>
+<!-- padding: .5rem 0.70rem; -->
+<div class="container-fluid">
+  <div class="col-md-5">
+    <form [formGroup]="registerLog" (ngSubmit)="onSubmit()">
+      <div class="form-group">
+        <label for="input_time">Date</label>
+        <input type="date" class="form-control" min="{{myDate}}" id="input_date" formControlName="inputDate" required>
+        <small class="form-text text-muted"></small>
+      </div>
+      <div class="form-group">
+        <label for="time">Time</label>
+        <select class="form-control" id="inputTime" formControlName="inputTime">
+          <option *ngFor="let time of inputTime; let i = index" [value]="time">
+            {{time}}
+          </option>
+        </select>
+        <!-- <input type="time"  class="form-control" id="input_time" formControlName="inputTime" required> -->
+        <small class="form-text text-muted"></small>
+      </div>
+      <div class="form-group">
+        <label for="project">Select Project</label>
+        <select class="form-control" id="project" formControlName="projects">
+          <option *ngFor="let project of projects; let i = index" [value]="project._id">
+            {{project.name}}
+          </option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="employee">Select Employee</label>
+        <select class="form-control" id="employee"  formControlName="employees">
+          <option *ngFor="let employee of employees; let i = index" [value]="employee._id">
+            {{employee.name}}
+          </option>
+        </select>
+      </div>
+      <button type="submit" class="btn btn-primary" [disabled]="registerLog.invalid">Submit</button>
+    </form>
+  </div>
+</div>
