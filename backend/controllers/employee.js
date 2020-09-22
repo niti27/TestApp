@@ -30,8 +30,6 @@ exports.getEmployees = (req, res, next) => {
 exports.createEmployee = (req, res, next) => {
 
   console.log("name:",req.body.name);
-
-  const url = req.protocol + "://" + req.get("host");
   const employee= new Employee({
     name: req.body.name,
    });
