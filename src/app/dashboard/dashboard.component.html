@@ -1,1 +1,54 @@
-<p>dashboard works!</p>
+
+<br>
+<div class="row">
+<h3 class="col-md-6"><b>Dashboard</b></h3>
+<div class="form-group col-md-3">
+  <select class="form-control-sm" id="project" [ngModel]="projects"  ngDefaultControl  (ngModelChange)="onProjectChange($event)">
+    <option *ngFor="let project of projects; let i = index" [value]="project._id" >
+      {{project.name}}
+    </option>
+  </select>
+</div>
+<div class="form-group col-md-3">
+  <select class="form-control-sm" id="employee">
+    <option *ngFor="let employee of employees; let i = index"  ngDefaultControl  [value]="employee._id" [ngModel]="employees" (ngModelChange)="onEmployeeChange($event)">
+      {{employee.name}}
+    </option>
+  </select>
+</div>
+</div>
+
+
+<hr>
+<h5>Project Status:</h5>
+
+<div class="card col-md-12"  style="background-color:#f8f9fa;">
+  <div class="card-body">
+    <p class="card-text project-log mx-auto">All project time log:150hr</p>
+    <p class="card-text project-log mx-auto">All project estimated time:250hr</p>
+    <p class="card-text project-log mx-auto">All employee time log:200hr</p>
+  </div>
+</div>
+<br>
+
+<table datatable [dtOptions]="dtOptions" id="datatable" [dtTrigger]="dtTrigger" class="table mt-2" cellspacing="0">
+  <thead>
+    <tr>
+      <th>Sr No</th>
+      <th>Project</th>
+      <th>Employee</th>
+      <th>Date</th>
+      <th>Time</th>
+    </tr>
+  </thead>
+  <tbody *ngIf="logs.length>0" >
+    <tr  *ngFor="let log of logs;let i=index">
+      <td>{{ i+1 }}</td>
+      <td>{{ log.project['name'] }}</td>
+      <td>{{ log.employee['name'] }}</td>
+      <td>{{ log.date }}</td>
+      <td>{{ log.time }}</td>
+    </tr>
+  </tbody>
+  </table>
+

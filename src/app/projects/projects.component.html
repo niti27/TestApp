@@ -1,1 +1,20 @@
-<p>projects works!</p>
+
+<br>
+<h3><b>Project List</b></h3>
+<hr>
+<table datatable [dtOptions]="dtOptions" [dtTrigger]="dtTrigger" class="table mt-2" cellspacing="0">
+  <thead>
+    <tr>
+      <th>Sr No</th>
+      <th>Name</th>
+      <th>Total Estimate</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let project of projects; let i=index">
+      <td>{{i + 1}}</td>
+      <td>{{ project.name }}</td>
+      <td>{{ project.totalestimate }}</td>
+    </tr>
+  </tbody>
+</table>
